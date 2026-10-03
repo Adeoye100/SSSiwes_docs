@@ -1,0 +1,32 @@
+<svg viewBox="0 0 800 200" xmlns="http://www.w3.org/2000/svg" style="background:var(--bg-color, #000);font-family:sans-serif;fill:var(--text-primary, #fff)">
+  <defs><marker id="arrow" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto" markerUnits="strokeWidth"><path d="M0,0 L0,6 L9,3 z" fill="var(--border-bright, rgba(255,255,255,0.4))" /></marker></defs>
+  <title>Unified Operation Flow</title>
+  <desc>Progression from Authentication to Audit Trail.</desc>
+  <style>
+    .box { fill: var(--surface-elevated, #050505); stroke: var(--border-bright, rgba(255,255,255,0.4)); stroke-width: 2; }
+    .text { fill: var(--text-primary, #fff); font-size: 13px; font-weight: bold; text-anchor: middle; }
+    .arrow { stroke: var(--border-bright, rgba(255,255,255,0.4)); stroke-width: 2; marker-end: url(#arrow); }
+  </style>
+  <rect x="20" y="70" width="100" height="60" class="box"/>
+  <text x="70" y="105" class="text">Auth &amp; Role</text>
+  <line x1="120" y1="100" x2="160" y2="100" class="arrow"/>
+
+  <rect x="160" y="70" width="100" height="60" class="box"/>
+  <text x="210" y="105" class="text">Operation</text>
+  <line x1="260" y1="100" x2="300" y2="100" class="arrow"/>
+
+  <rect x="300" y="70" width="100" height="60" class="box"/>
+  <text x="350" y="105" class="text">Transaction</text>
+  <line x1="400" y1="100" x2="440" y2="100" class="arrow"/>
+
+  <rect x="440" y="70" width="100" height="60" class="box"/>
+  <text x="490" y="105" class="text">Receipt/QR</text>
+  <line x1="540" y1="100" x2="580" y2="100" class="arrow"/>
+
+  <rect x="580" y="70" width="100" height="60" class="box"/>
+  <text x="630" y="105" class="text">System Record</text>
+  <line x1="680" y1="100" x2="720" y2="100" class="arrow"/>
+
+  <rect x="720" y="70" width="70" height="60" class="box" stroke="#44ff44"/>
+  <text x="755" y="105" class="text">AuditLog</text>
+</svg>

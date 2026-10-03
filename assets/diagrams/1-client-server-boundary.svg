@@ -1,0 +1,33 @@
+<svg viewBox="0 0 800 300" xmlns="http://www.w3.org/2000/svg" style="background:var(--bg-color, #000);font-family:sans-serif;fill:var(--text-primary, #fff)">
+  <defs><marker id="arrow" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto" markerUnits="strokeWidth"><path d="M0,0 L0,6 L9,3 z" fill="var(--border-bright, rgba(255,255,255,0.4))" /></marker></defs>
+  <title>Client-Server Boundary &amp; Security</title>
+  <desc>Shows the strict boundary between Vercel frontend and Render backend, with Zod and Role Checks.</desc>
+  <style>
+    .box { fill: var(--surface-elevated, #050505); stroke: var(--border-bright, rgba(255,255,255,0.4)); stroke-width: 2; }
+    .text { fill: var(--text-primary, #fff); font-size: 14px; text-anchor: middle; }
+    .line { stroke: var(--border-bright, rgba(255,255,255,0.4)); stroke-width: 2; stroke-dasharray: 4; }
+    .label { fill: var(--text-muted, rgba(255,255,255,0.55)); font-size: 12px; }
+  </style>
+  <rect x="50" y="50" width="180" height="200" rx="0" class="box"/>
+  <text x="140" y="80" class="text" font-weight="bold">Vercel (Frontend)</text>
+  <text x="140" y="120" class="text">React + Vite</text>
+  <text x="140" y="150" class="text">API Client</text>
+  
+  <line x1="230" y1="150" x2="330" y2="150" class="line" marker-end="url(#arrow)"/>
+  <text x="280" y="140" class="label" text-anchor="middle">HTTPS / REST</text>
+  
+  <rect x="330" y="50" width="220" height="200" rx="0" class="box"/>
+  <text x="440" y="80" class="text" font-weight="bold">Render (Backend)</text>
+  <text x="440" y="120" class="text">Express API</text>
+  <text x="440" y="150" class="text">Role Check + Auth</text>
+  <text x="440" y="180" class="text">Zod Validation</text>
+  
+  <line x1="550" y1="150" x2="630" y2="150" class="line" marker-end="url(#arrow)"/>
+  
+  <rect x="630" y="100" width="120" height="100" rx="0" class="box"/>
+  <text x="690" y="140" class="text" font-weight="bold">MongoDB</text>
+  <text x="690" y="160" class="label" text-anchor="middle">Database</text>
+
+  <line x1="280" y1="20" x2="280" y2="280" stroke="#ff4444" stroke-width="2" stroke-dasharray="10" />
+  <text x="280" y="15" fill="#ff4444" font-size="12px" text-anchor="middle">Security Boundary</text>
+</svg>

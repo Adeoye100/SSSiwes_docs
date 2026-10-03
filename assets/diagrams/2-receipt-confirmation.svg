@@ -1,0 +1,30 @@
+<svg viewBox="0 0 800 300" xmlns="http://www.w3.org/2000/svg" style="background:var(--bg-color, #000);font-family:sans-serif;fill:var(--text-primary, #fff)">
+  <defs><marker id="arrow" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto" markerUnits="strokeWidth"><path d="M0,0 L0,6 L9,3 z" fill="var(--border-bright, rgba(255,255,255,0.4))" /></marker></defs>
+  <title>End-to-End Session &amp; Claim Lifecycle</title>
+  <desc>Shows generation of secure one-time QR claim token at transaction commit and scanning to release.</desc>
+  <style>
+    .box { fill: var(--surface-elevated, #050505); stroke: var(--border-bright, rgba(255,255,255,0.4)); stroke-width: 2; }
+    .text { fill: var(--text-primary, #fff); font-size: 13px; text-anchor: middle; }
+    .arrow { stroke: var(--border-bright, rgba(255,255,255,0.4)); stroke-width: 2; marker-end: url(#arrow); }
+  </style>
+  <rect x="20" y="100" width="120" height="60" class="box"/>
+  <text x="80" y="135" class="text">Staff creates</text>
+  <line x1="140" y1="130" x2="180" y2="130" class="arrow"/>
+  
+  <rect x="180" y="100" width="120" height="60" class="box"/>
+  <text x="240" y="135" class="text">DB Commit</text>
+  <line x1="300" y1="130" x2="340" y2="130" class="arrow"/>
+  
+  <rect x="340" y="70" width="120" height="120" class="box"/>
+  <text x="400" y="105" class="text">Generate</text>
+  <text x="400" y="130" class="text">Receipt PDF &amp;</text>
+  <text x="400" y="155" class="text">1-Time QR</text>
+  <line x1="460" y1="130" x2="500" y2="130" class="arrow"/>
+  
+  <rect x="500" y="100" width="120" height="60" class="box"/>
+  <text x="560" y="135" class="text">QR Scanned</text>
+  <line x1="620" y1="130" x2="660" y2="130" class="arrow"/>
+
+  <rect x="660" y="100" width="120" height="60" class="box" stroke="#44ff44"/>
+  <text x="720" y="135" class="text">Collected</text>
+</svg>

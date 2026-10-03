@@ -1,0 +1,33 @@
+<svg viewBox="0 0 800 400" xmlns="http://www.w3.org/2000/svg" style="background:var(--bg-color, #000);font-family:sans-serif;fill:var(--text-primary, #fff)">
+  <defs><marker id="arrow" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto" markerUnits="strokeWidth"><path d="M0,0 L0,6 L9,3 z" fill="var(--border-bright, rgba(255,255,255,0.4))" /></marker></defs>
+  <title>Tiered Deployment Architecture</title>
+  <desc>Shows Vercel frontend, Render API, Supabase Auth and MongoDB.</desc>
+  <style>
+    .layer { fill: var(--surface-elevated, #050505); stroke: var(--border-bright, rgba(255,255,255,0.4)); stroke-width: 2; }
+    .text { fill: var(--text-primary, #fff); font-size: 15px; font-weight: bold; text-anchor: middle; }
+    .subtext { fill: var(--text-muted, rgba(255,255,255,0.55)); font-size: 12px; text-anchor: middle; }
+  </style>
+  <rect x="200" y="20" width="400" height="60" class="layer"/>
+  <text x="400" y="45" class="text">User / Client</text>
+  
+  <rect x="200" y="100" width="400" height="60" class="layer"/>
+  <text x="400" y="125" class="text">Presentation (Frontend)</text>
+  <text x="400" y="145" class="subtext">Deployed on Vercel</text>
+  
+  <rect x="200" y="180" width="400" height="60" class="layer"/>
+  <text x="400" y="205" class="text">Business Logic (API)</text>
+  <text x="400" y="225" class="subtext">Deployed on Render (Express + Zod)</text>
+
+  <rect x="100" y="280" width="250" height="60" class="layer"/>
+  <text x="225" y="305" class="text">Authentication</text>
+  <text x="225" y="325" class="subtext">Supabase Auth</text>
+  
+  <rect x="450" y="280" width="250" height="60" class="layer"/>
+  <text x="575" y="305" class="text">Database</text>
+  <text x="575" y="325" class="subtext">MongoDB Atlas</text>
+
+  <line x1="400" y1="80" x2="400" y2="100" stroke="var(--border-bright, #fff)" stroke-width="2"/>
+  <line x1="400" y1="160" x2="400" y2="180" stroke="var(--border-bright, #fff)" stroke-width="2"/>
+  <line x1="300" y1="240" x2="250" y2="280" stroke="var(--border-bright, #fff)" stroke-width="2"/>
+  <line x1="500" y1="240" x2="550" y2="280" stroke="var(--border-bright, #fff)" stroke-width="2"/>
+</svg>

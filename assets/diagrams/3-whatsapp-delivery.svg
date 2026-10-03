@@ -1,0 +1,30 @@
+<svg viewBox="0 0 800 300" xmlns="http://www.w3.org/2000/svg" style="background:var(--bg-color, #000);font-family:sans-serif;fill:var(--text-primary, #fff)">
+  <defs><marker id="arrow" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto" markerUnits="strokeWidth"><path d="M0,0 L0,6 L9,3 z" fill="var(--border-bright, rgba(255,255,255,0.4))" /></marker></defs>
+  <title>Asynchronous Notification Delivery</title>
+  <desc>Shows WhatsApp failure does not roll back core transaction.</desc>
+  <style>
+    .box { fill: var(--surface-elevated, #050505); stroke: var(--border-bright, rgba(255,255,255,0.4)); stroke-width: 2; }
+    .text { fill: var(--text-primary, #fff); font-size: 13px; text-anchor: middle; }
+    .arrow { stroke: var(--border-bright, rgba(255,255,255,0.4)); stroke-width: 2; }
+  </style>
+  <rect x="50" y="100" width="120" height="60" class="box"/>
+  <text x="110" y="135" class="text">DB Commit</text>
+  <line x1="170" y1="130" x2="220" y2="130" class="arrow" marker-end="url(#arrow)"/>
+  
+  <rect x="220" y="100" width="140" height="60" class="box"/>
+  <text x="290" y="135" class="text">Consent Check</text>
+  
+  <line x1="360" y1="130" x2="420" y2="130" class="arrow" marker-end="url(#arrow)"/>
+  
+  <rect x="420" y="100" width="140" height="60" class="box"/>
+  <text x="490" y="135" class="text">Provider Send API</text>
+  
+  <line x1="560" y1="110" x2="620" y2="80" class="arrow" marker-end="url(#arrow)"/>
+  <rect x="620" y="50" width="120" height="60" class="box" stroke="#44ff44"/>
+  <text x="680" y="85" class="text">Success</text>
+
+  <line x1="560" y1="150" x2="620" y2="180" class="arrow" marker-end="url(#arrow)" stroke="#ff4444" stroke-dasharray="4"/>
+  <rect x="620" y="150" width="120" height="60" class="box" stroke="#ff4444"/>
+  <text x="680" y="185" class="text">Failed/Pending</text>
+  <text x="680" y="230" fill="#ff4444" font-size="11px" text-anchor="middle">(Transaction remains valid)</text>
+</svg>

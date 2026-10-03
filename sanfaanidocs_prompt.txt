@@ -1,0 +1,813 @@
+/grill-me I'm asked to create a documentation sites for my SIWES project(https://github.com/Sanfaanisaas/Service);
+
+/landing-page-design I want to use the same design system for a clean structured (https://siwes-presentation-five.vercel.app) html/.md page documentation that features:
+
+---
+1. Why the project was built
+2. what it is and entails (problem solved and the stacks used in the project)
+3. the architecture behind the system with images (BE&FE interaction, recieptconfirmation, WhatsApp delivery, Architectural view, Application Interaction Architecture, Overall Application Flow)
+4. What I learned during the project's developement 
+---
+SANFAANI Project Context and Handoff Document
+1. Project Overview
+
+SANFAANI is a business operations and service-management platform developed during the user's SIWES experience. The project was created to apply software engineering knowledge to a practical operational problem rather than building only an academic demonstration.
+
+The central idea is to bring several everyday business activities into one connected system. These activities include device charging, workspace usage, inventory, sales, payments, receipts, customer collection, staff operations and administrative records.
+
+Before a system like this, these activities can easily become fragmented across manual records, separate processes or disconnected tools. SANFAANI provides a central application for recording activities, managing resources and maintaining traceable operational records.
+
+The project therefore demonstrates the transition from learning software engineering concepts to applying those concepts to a real operational environment.
+
+2. Problem the Project Addresses
+
+The main problem SANFAANI addresses is operational fragmentation.
+
+A business that provides services such as device charging and workspace access also needs to manage:
+
+customer registrations
+charging sessions
+available charging capacity
+workspace usage
+inventory
+sales
+payments
+receipts
+customer claims
+staff activities
+financial records
+historical records
+
+When these activities are handled independently, it becomes more difficult to maintain accurate records and understand the current state of the business.
+
+SANFAANI was designed to bring these activities together into a single operational system.
+
+The objective is not simply to digitize individual tasks. It is to create a connected flow where an operational action produces the necessary business records automatically.
+
+For example:
+
+Customer service → transaction → receipt → record → operational history
+
+This gives the business a clearer and more traceable representation of what has happened.
+
+3. Main Purpose
+
+The primary purpose of SANFAANI is:
+
+To provide a centralized system for managing everyday service operations, transactions, inventory and records in a more organized and traceable way.
+
+The project also served as a practical software engineering exercise in:
+
+full-stack development
+application architecture
+authentication and authorization
+database management
+API development
+transaction handling
+document generation
+deployment
+security
+reliability
+
+The project therefore has both a business purpose and a learning purpose.
+
+4. Intended Users
+
+SANFAANI has role-based access.
+
+Administrator
+
+The administrator has broader control over the system.
+
+Administrative responsibilities include areas such as:
+
+managing operational information
+monitoring business activity
+managing inventory
+viewing records
+managing staff access
+reviewing financial information
+monitoring system activity
+Staff
+
+Staff members primarily handle everyday operations.
+
+Their activities can include:
+
+registering customers for services
+managing charging sessions
+managing workspace usage
+recording sales
+processing operational transactions
+issuing receipts
+handling customer collection
+Customer
+
+The customer is primarily the recipient of the services and transaction outputs.
+
+The customer can receive things such as:
+
+service receipts
+payment records
+charging claim information
+QR-based collection credentials
+notifications
+
+The internal management interface is primarily designed around Admin and Staff operations.
+
+5. Core Application Modules
+
+SANFAANI is organized around several connected operational areas.
+
+Charging Management
+
+The charging module manages device charging activities.
+
+It allows the system to keep track of:
+
+charging sessions
+occupied and available capacity
+customer/device information
+charging status
+collection status
+
+A charging session is connected to the relevant transaction and receipt.
+
+The system also uses a secure claim mechanism for device collection.
+
+Workspace Management
+
+The workspace functionality allows the business to record and manage workspace usage.
+
+This gives the business a way to track:
+
+workspace registration
+customer usage
+available capacity
+associated operational records
+
+The workspace module is part of the wider operational system rather than functioning as a completely separate application.
+
+Inventory Management
+
+The inventory module manages stock and stock movement.
+
+The system tracks information such as:
+
+stock quantity
+cost price
+selling price
+stock movements
+inventory value
+
+SANFAANI distinguishes between:
+
+Stock Units
+
+The number of physical units available.
+
+Inventory Cost
+
+The value of the current stock based on its acquisition cost.
+
+Retail Value
+
+The potential value of the stock when sold.
+
+Potential Margin
+
+The difference between potential retail value and inventory cost.
+
+These values are deliberately kept separate from actual revenue or profit.
+
+Sales
+
+The sales component records product/service transactions and connects them with the broader financial record of the application.
+
+This allows operational transactions to contribute to a centralized history rather than existing as isolated records.
+
+Receipts
+
+Receipts provide customers with evidence of their transactions.
+
+SANFAANI supports receipt generation and PDF documents.
+
+For charging transactions, the receipt can also contain a secure QR-based claim mechanism.
+
+Financial Records
+
+Transactions are recorded centrally so that operational activities can be traced back to their financial effect.
+
+This provides the foundation for:
+
+transaction history
+financial records
+operational reporting
+reconciliation
+
+The intention is to avoid treating payment records as disconnected from the activity that generated them.
+
+Notifications
+
+The application supports notification-related functionality for operational events.
+
+This provides a mechanism for communicating relevant information to users without making notifications part of the core transaction itself.
+
+6. Customer Receipt and Charging Flow
+
+One of the most important workflows in SANFAANI is the charging process.
+
+The simplified flow is:
+
+Customer requests charging
+        ↓
+Staff creates charging session
+        ↓
+Transaction is recorded
+        ↓
+Receipt is generated
+        ↓
+Secure claim information is created
+        ↓
+Device is charged
+        ↓
+Customer returns
+        ↓
+Staff scans/verifies claim
+        ↓
+System confirms valid collection
+        ↓
+Device is released
+        ↓
+Charging session is completed
+
+The claim mechanism is particularly important because the receipt is not merely a payment document. For charging services, it also becomes part of the device collection process.
+
+The QR claim uses a secure one-time token.
+
+The system verifies the claim before allowing collection, helping prevent the same claim from being reused.
+
+7. Receipt Delivery
+
+SANFAANI also has an intended WhatsApp receipt delivery capability.
+
+The important architectural decision is that WhatsApp delivery is not part of the core financial transaction.
+
+The business transaction is completed first.
+
+Then receipt delivery can happen separately.
+
+Conceptually:
+
+Transaction
+    ↓
+Database confirmation
+    ↓
+Receipt generated
+    ↓
+WhatsApp delivery
+
+If WhatsApp is unavailable or fails, the completed transaction remains valid.
+
+This separation prevents an external communication service from causing a completed business transaction to fail.
+
+WhatsApp delivery is also designed around explicit customer consent rather than assuming that possessing a phone number automatically gives permission to send messages.
+
+The WhatsApp integration remains dependent on the appropriate provider credentials, approved template and configuration.
+
+8. Application Architecture
+
+SANFAANI follows a layered architecture.
+
+USER
+  ↓
+FRONTEND
+  ↓
+API
+  ↓
+AUTHENTICATION / AUTHORIZATION
+  ↓
+BUSINESS LOGIC
+  ↓
+DATABASE
+
+The frontend is responsible for presenting the application and allowing staff or administrators to interact with it.
+
+The backend is responsible for:
+
+receiving requests
+authenticating users
+enforcing permissions
+validating information
+executing business rules
+communicating with the database
+producing responses
+
+The database stores the persistent business information.
+
+The frontend does not directly manage the database.
+
+This separation makes the system easier to maintain and provides an important security boundary.
+
+9. Frontend
+
+The main operational frontend is SANFAANI Operations.
+
+It is built using:
+
+React
+Vite
+TypeScript
+Tailwind CSS
+TanStack Query
+generated API client
+
+The frontend provides the user-facing interface for the operational system.
+
+It is responsible for things such as:
+
+dashboards
+forms
+tables
+transaction interfaces
+inventory interfaces
+charging interfaces
+receipt views
+administrative views
+staff operations
+
+The frontend communicates with the backend through the application's API rather than directly accessing MongoDB.
+
+10. Backend
+
+The backend provides the application's central API and business logic.
+
+It is built with:
+
+Node.js
+Express
+TypeScript
+Zod
+Mongoose
+
+The backend acts as the application's control layer.
+
+A typical request follows:
+
+Frontend request
+      ↓
+Authentication
+      ↓
+Authorization
+      ↓
+Validation
+      ↓
+Business logic
+      ↓
+Database operation
+      ↓
+Response
+      ↓
+Frontend
+
+This means the backend remains responsible for enforcing the application's rules even if someone attempts to bypass the frontend.
+
+11. Database
+
+SANFAANI uses MongoDB for persistent application data.
+
+Mongoose provides the application's data models and database interaction layer.
+
+The database stores information associated with areas such as:
+
+users
+charging sessions
+transactions
+inventory
+workspace records
+receipts
+notifications
+operational history
+audit information
+
+The database is therefore the persistent source of truth for the application's operational state.
+
+12. Authentication and Authorization
+
+SANFAANI uses Supabase Authentication for user identity and session management.
+
+The basic flow is:
+
+User signs in
+     ↓
+Supabase authenticates user
+     ↓
+Frontend receives session
+     ↓
+Access token accompanies API requests
+     ↓
+Backend verifies identity
+     ↓
+Backend checks application role
+     ↓
+Request is accepted or rejected
+
+There is an important distinction between authentication and authorization.
+
+Authentication answers:
+
+“Who is this user?”
+
+Authorization answers:
+
+“What is this user allowed to do?”
+
+SANFAANI uses the backend to enforce the second part.
+
+This means simply having a valid login does not automatically give a user administrative privileges.
+
+13. API Communication
+
+The frontend and backend communicate through an API contract.
+
+SANFAANI uses an OpenAPI-based approach and a generated API client.
+
+This gives the frontend and backend a shared understanding of:
+
+available endpoints
+request structures
+response structures
+expected data types
+
+The generated client reduces the need to manually duplicate API definitions across the frontend.
+
+The result is a clearer boundary between the user interface and server-side operations.
+
+14. Technology Stack
+
+The major stack can be summarized as:
+
+Frontend
+React + Vite + TypeScript
+        ↓
+TanStack Query + Generated API Client
+        ↓
+Express + TypeScript
+        ↓
+Supabase Authentication
+        ↓
+Business Logic + Validation
+        ↓
+Mongoose
+        ↓
+MongoDB
+
+Supporting technologies include:
+
+Tailwind CSS
+OpenAPI
+PDF generation
+QR generation
+Web Push
+WhatsApp integration
+Vercel
+Render
+
+Each technology has a defined responsibility rather than being included simply because it is popular.
+
+15. Deployment
+
+The project uses a split deployment architecture.
+
+Frontend
+
+The operational frontend is deployed through Vercel.
+
+The production frontend domain has been configured around the SANFAANI deployment, with the production-facing domain recorded as:
+
+sanfaanitechhub.sanfaani.net
+
+Backend
+
+The backend is deployed through Render.
+
+The backend exposes the API used by the frontend.
+
+Database and authentication
+
+MongoDB provides persistent application storage.
+
+Supabase provides authentication services.
+
+This creates the overall deployment structure:
+
+                    SANFAANI
+                       │
+          ┌────────────┴────────────┐
+          │                         │
+       Vercel                    Render
+      Frontend                  Backend API
+          │                         │
+          └────────────┬────────────┘
+                       │
+                External Services
+                 ┌─────┴─────┐
+                 │           │
+              Supabase    MongoDB
+              Auth        Database
+16. Security Approach
+
+Security was treated as part of the application's architecture rather than as something added at the end.
+
+Important areas include:
+
+Authentication
+
+Users must have a valid authenticated session.
+
+Role-based authorization
+
+Different roles receive different permissions.
+
+Backend enforcement
+
+Security rules are enforced on the server rather than relying only on frontend visibility.
+
+Input validation
+
+Incoming data is validated before business operations are performed.
+
+Rate limiting
+
+The backend has rate-limiting protections around sensitive operations.
+
+Security headers
+
+The backend uses security middleware such as Helmet.
+
+Audit records
+
+Important operational activity can be traced through audit information.
+
+Secure claims
+
+Charging collection uses a secure claim token rather than relying only on a visible receipt number.
+
+Secret separation
+
+Backend credentials such as service-role credentials are not intended to be exposed through frontend environment variables.
+
+17. Reliability and Transaction Design
+
+One of the important engineering lessons from SANFAANI is that a business transaction can involve multiple systems.
+
+For example:
+
+Customer payment
+      ↓
+Database
+      ↓
+Receipt
+      ↓
+WhatsApp
+
+The database operation and external communication should not be treated as one inseparable action.
+
+SANFAANI therefore separates the core business transaction from secondary services such as WhatsApp delivery.
+
+This protects the integrity of the primary record.
+
+The same principle applies to other operations where consistency matters. A completed financial operation should not disappear simply because an external notification failed.
+
+18. Inventory Business Logic
+
+The inventory system deliberately distinguishes between different kinds of value.
+
+For example:
+
+Stock Units
+    ↓
+How many items exist?
+
+Inventory Cost
+    ↓
+What did the current stock cost?
+
+Retail Value
+    ↓
+What could the current stock sell for?
+
+Potential Margin
+    ↓
+Retail Value - Inventory Cost
+
+This distinction is important because potential retail value is not the same thing as actual revenue, and potential margin is not automatically realized profit.
+
+This makes the dashboard more meaningful for operational management.
+
+19. Project Repository Structure
+
+The project is organized as a pnpm monorepo.
+
+Important areas include:
+
+SanfaaniService/
+│
+├── backend/
+│   ├── api-server/
+│   └── ...
+│
+├── frontend/
+│   └── sanfaani-operations/
+│
+├── lib/
+│   ├── API/client-related packages
+│   └── shared integrations
+│
+├── scripts/
+│
+├── pnpm-workspace.yaml
+└── pnpm-lock.yaml
+
+The separation allows the frontend, backend and shared packages to evolve within one project while maintaining clear responsibilities.
+
+20. Development and Testing
+
+The project has gone through structured development and verification rather than being treated as a single code dump.
+
+Important verification areas have included:
+
+Type checking
+        ↓
+Automated tests
+        ↓
+Build
+        ↓
+Security checks
+        ↓
+Deployment verification
+
+The backend has its own test environment, including isolated MongoDB testing.
+
+The frontend has its own test setup.
+
+The project also uses dependency security monitoring. Recent work has focused on resolving vulnerable dependencies such as:
+
+fast-uri
+js-yaml
+qs
+vitest
+@vitest/mocker
+other transitive dependencies identified by GitHub security alerts
+
+The dependency remediation is intended to be applied directly to the local main branch and then pushed to the repository.
+
+21. Repository and Production History
+
+The project has had different stages of development.
+
+There was a broader pre-production version containing the full product scope, including customer-oriented functionality.
+
+The current production-facing GitHub repository is:
+
+Sanfaanisaas/Service
+
+The current operational frontend emphasizes Admin and Staff workflows, while relevant backend structures remain available for the wider product architecture.
+
+A separate GitLab archive preserves the historical/pre-production product state.
+
+The archive is intended as historical preservation and should not be casually modified or deleted.
+
+22. Current Project Direction
+
+The project has moved beyond simply proving that the application can run.
+
+The major focus has become making the system reliable enough for realistic use.
+
+That has involved working through areas such as:
+
+authentication
+role enforcement
+database connectivity
+deployment configuration
+API communication
+receipt generation
+charging claims
+inventory valuation
+WhatsApp integration
+security vulnerabilities
+dependency maintenance
+testing
+production configuration
+
+This represents an important shift from:
+
+“Can I build this feature?”
+
+to:
+
+“Can this feature operate reliably as part of a complete system?”
+
+23. Known Constraints
+
+Some functionality depends on external services or configuration.
+
+For example, WhatsApp receipt delivery requires the appropriate:
+
+WhatsApp provider configuration
+access credentials
+phone number configuration
+approved message template
+customer consent
+
+Therefore, WhatsApp should be understood as an integrated capability with external dependencies, rather than something that is completely controlled by SANFAANI itself.
+
+Similarly, production operation depends on correct configuration of:
+
+MongoDB
+Supabase
+Render
+Vercel
+environment variables
+CORS
+authentication settings
+24. Current High-Level Status
+
+The project has reached a substantial operational stage.
+
+The core architecture exists:
+
+Frontend
+        ↓
+API
+        ↓
+Authentication
+        ↓
+Business Logic
+        ↓
+Database
+
+The major operational areas have also been established:
+
+Charging
+Workspace
+Inventory
+Sales
+Receipts
+Transactions
+Administration
+Staff operations
+
+The remaining work is therefore less about inventing the fundamental system and more about verification, integration, security, deployment stability and final production readiness.
+
+The exact status of any individual deployment or external integration should be verified against the latest repository and deployment state before being described as fully live.
+
+25. Why SANFAANI Matters as a SIWES Project
+
+SANFAANI is particularly relevant to the SIWES experience because it demonstrates practical application of software engineering knowledge.
+
+The project allowed classroom and self-taught concepts to be applied to a real operational scenario.
+
+Instead of building an isolated CRUD demonstration, the project required consideration of:
+
+Real users
+    ↓
+Real operations
+    ↓
+Real data
+    ↓
+Authentication
+    ↓
+Business rules
+    ↓
+Financial records
+    ↓
+Security
+    ↓
+Deployment
+
+That progression is the strongest part of the project from a learning perspective.
+
+The project demonstrates that software engineering involves more than writing code. It involves understanding a problem, designing a system around it, protecting its data, connecting its components, validating its behaviour and preparing it for actual use.
+
+26. One-Paragraph Project Summary
+
+SANFAANI is a full-stack business operations platform developed during SIWES to solve the problem of fragmented day-to-day business management. The system brings services such as device charging, workspace usage, inventory, sales, transactions and receipts into one connected application. It provides role-based access for administrators and staff, while customer-facing outputs such as receipts and charging collection claims are generated from the same operational records. The application uses a React and Vite frontend, an Express and TypeScript backend, Supabase for authentication, MongoDB for data storage and supporting services for receipts, QR claims, notifications and communication. Beyond implementing features, the project focused on security, data consistency, API communication, testing and deployment, making it a practical application of software engineering knowledge to a real operational problem.
+
+27. The Simplest Way to Explain SANFAANI
+
+If someone asks you “What exactly did you build?”, the strongest simple explanation is:
+
+“SANFAANI is an operations management system that brings a business's everyday activities into one place. It helps staff and administrators manage services, charging, workspace usage, inventory, sales, transactions and receipts while keeping the records connected and traceable.”
+
+If they ask:
+
+“What problem did you solve?”
+
+“I solved the problem of fragmented operational record keeping by connecting everyday business activities into one system instead of treating each activity as a separate process.”
+
+If they ask:
+
+“What did you personally learn from it?”
+
+“The project taught me that software engineering goes beyond implementing features. I had to consider authentication, authorization, data consistency, security, external services, testing and deployment, and how all of those parts work together to solve a real problem.”

@@ -1,0 +1,40 @@
+<svg viewBox="0 0 800 350" xmlns="http://www.w3.org/2000/svg" style="background:var(--bg-color, #000);font-family:sans-serif;fill:var(--text-primary, #fff)">
+  <defs><marker id="arrow" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto" markerUnits="strokeWidth"><path d="M0,0 L0,6 L9,3 z" fill="var(--border-bright, rgba(255,255,255,0.4))" /></marker></defs>
+  <title>Module Interconnectivity</title>
+  <desc>How modules funnel into Financial Records and Receipts.</desc>
+  <style>
+    .module { fill: var(--surface-deep, #080808); stroke: var(--border-bright, rgba(255,255,255,0.4)); stroke-width: 2; }
+    .core { fill: var(--surface-elevated, #050505); stroke: #ffffff; stroke-width: 2; }
+    .text { fill: var(--text-primary, #fff); font-size: 14px; text-anchor: middle; font-weight: bold; }
+    .arrow { stroke: var(--border-bright, rgba(255,255,255,0.4)); stroke-width: 2; marker-end: url(#arrow); }
+  </style>
+  <rect x="50" y="50" width="120" height="50" class="module"/>
+  <text x="110" y="80" class="text">Charging</text>
+  
+  <rect x="50" y="120" width="120" height="50" class="module"/>
+  <text x="110" y="150" class="text">Workspace</text>
+  
+  <rect x="50" y="190" width="120" height="50" class="module"/>
+  <text x="110" y="220" class="text">Inventory</text>
+  
+  <rect x="50" y="260" width="120" height="50" class="module"/>
+  <text x="110" y="290" class="text">Sales</text>
+  
+  <rect x="350" y="150" width="150" height="80" class="core"/>
+  <text x="425" y="185" class="text">Central Ledger</text>
+  <text x="425" y="205" fill="var(--text-muted, #999)" font-size="12px" text-anchor="middle">(Transactions)</text>
+
+  <rect x="600" y="100" width="120" height="50" class="module"/>
+  <text x="660" y="130" class="text">Receipts</text>
+
+  <rect x="600" y="200" width="120" height="50" class="module"/>
+  <text x="660" y="230" class="text">Financial Records</text>
+
+  <path d="M 170 75 L 350 170" class="arrow"/>
+  <path d="M 170 145 L 350 180" class="arrow"/>
+  <path d="M 170 215 L 350 190" class="arrow"/>
+  <path d="M 170 285 L 350 200" class="arrow"/>
+
+  <path d="M 500 180 L 600 130" class="arrow"/>
+  <path d="M 500 200 L 600 220" class="arrow"/>
+</svg>
